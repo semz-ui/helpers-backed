@@ -6,11 +6,11 @@ interface IModelCoverLetter extends ICoverLetter, Document {
 }
 
 const coverLetterSchema: Schema = new Schema({
-    user: {
-      type: Types.ObjectId,
-      ref: "User",
-      required: [true, "Please add a user"],
-    },
+    // user: {
+    //   type: Types.ObjectId,
+    //   ref: "User",
+    //   required: [true, "Please add a user"],
+    // },
     title: {
       type: String,
       default: "",

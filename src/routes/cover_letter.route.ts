@@ -23,7 +23,6 @@ const upload = multer({ dest: uploadDir });
 
 router.post(
   "/upload-and-analyze",
-  protect,
   upload.single("file"),
   async (req: Request, res: Response) => {
     if (!req.file) {
@@ -77,15 +76,16 @@ router.post(
 
       fs.unlinkSync(filePath);
 
-    
-      console.log("Final response:", response.text);
       const sepText = parseResponse(response.text || "");
 
-      const createdCoverLetter = await CoverLetter.create({
+      const createdCoverLetter = 
+      // await CoverLetter.create(
+        {
         title: sepText.title,
         description: sepText.description,
-        user: req.user
-      })
+        // user: req.user
+      }
+    // )
       res.json({ success: true, data: createdCoverLetter });
     } catch (error) {
       console.error("Error:", error);
